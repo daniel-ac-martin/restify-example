@@ -1,0 +1,19 @@
+api:
+  build: "."
+  environment:
+    - LISTEN_HOST=0.0.0.0
+    - LISTEN_PORT=8080
+    - POSTGRES_USER=app
+    - POSTGRES_PASSWORD=password
+  links:
+    - postgres
+  ports:
+    - "80:8080"
+postgres:
+  image: postgres:9-alpine
+  environment:
+    - POSTGRES_USER=user
+    - POSTGRES_PASSWORD=password
+    - POSTGRES_DB=database
+  ports:
+    - "5432:5432"
